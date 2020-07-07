@@ -14,7 +14,7 @@ namespace CarReportSystem
         //記録者
         public string Author { get; set; }
         //メーカー（列挙型）
-        public CaraMaker Maker { get; set; }
+        public CarMaker Maker { get; set; }
         //車名
         public string Name { get; set; }
         //レポート
@@ -23,7 +23,8 @@ namespace CarReportSystem
         public Image Picturt { get; set; }
     }
 
-    public enum CaraMaker
+    //メーカー
+    public enum CarMaker
     {
         DEFAULT,
         トヨタ,
@@ -31,6 +32,6 @@ namespace CarReportSystem
         ホンダ,
         スバル,
         外車,
-        その他
+        その他        
     }
 }
