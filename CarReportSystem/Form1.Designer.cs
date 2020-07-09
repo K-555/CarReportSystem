@@ -59,9 +59,18 @@
             this.ofdOpenImage = new System.Windows.Forms.OpenFileDialog();
             this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新規作成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.開くOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.名前を付けて保存AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.gbMaker.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelCreatedDate
@@ -370,6 +379,67 @@
             // 
             this.ofdOpenData.FileName = "openFileDialog1";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルFToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(816, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルFToolStripMenuItem
+            // 
+            this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新規作成ToolStripMenuItem,
+            this.開くOToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.名前を付けて保存AToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.終了XToolStripMenuItem});
+            this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // 新規作成ToolStripMenuItem
+            // 
+            this.新規作成ToolStripMenuItem.Name = "新規作成ToolStripMenuItem";
+            this.新規作成ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新規作成ToolStripMenuItem.Text = "新規作成";
+            this.新規作成ToolStripMenuItem.Click += new System.EventHandler(this.新規作成ToolStripMenuItem_Click);
+            // 
+            // 開くOToolStripMenuItem
+            // 
+            this.開くOToolStripMenuItem.Name = "開くOToolStripMenuItem";
+            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くOToolStripMenuItem.Text = "開く(&O)";
+            this.開くOToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click_1);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // 名前を付けて保存AToolStripMenuItem
+            // 
+            this.名前を付けて保存AToolStripMenuItem.Name = "名前を付けて保存AToolStripMenuItem";
+            this.名前を付けて保存AToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.名前を付けて保存AToolStripMenuItem.Text = "名前を付けて保存(&A)";
+            this.名前を付けて保存AToolStripMenuItem.Click += new System.EventHandler(this.名前を付けて保存AToolStripMenuItem_Click_1);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // 終了XToolStripMenuItem
+            // 
+            this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了XToolStripMenuItem.Text = "終了(&X)";
+            this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -397,6 +467,8 @@
             this.Controls.Add(this.labelMaker);
             this.Controls.Add(this.labelAuthor);
             this.Controls.Add(this.labelCreatedDate);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "試乗レポート管理システム";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -404,6 +476,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.gbMaker.ResumeLayout(false);
             this.gbMaker.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,6 +516,14 @@
         private System.Windows.Forms.OpenFileDialog ofdOpenImage;
         private System.Windows.Forms.SaveFileDialog sfdSaveData;
         private System.Windows.Forms.OpenFileDialog ofdOpenData;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ファイルFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新規作成ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 開くOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem 名前を付けて保存AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem 終了XToolStripMenuItem;
     }
 }
 

@@ -64,9 +64,7 @@ namespace CarReportSystem
         //オブジェクトをクリア
         private void inputItemAllClear()
         {
-            //dtpCreatedDate = null;
             cbAuthor.Text = default;
-            //MakerSelect().Equals(false);
             cbName.Text = default;
             tbReport.Text = default;
             pbImage.Image = null;
@@ -197,15 +195,14 @@ namespace CarReportSystem
             {
                 btRetouching.Enabled = true;
                 btDeleteReport.Enabled = true;
-                btDeleteImage.Enabled = true;
             }
             else
             {
                 btRetouching.Enabled = false;
                 btDeleteReport.Enabled = false;
-                btDeleteImage.Enabled = false;
             }
         }
+
 
         //ボタン比較
         private void MakerSelectCheck()
@@ -291,6 +288,67 @@ namespace CarReportSystem
                     }
                 }
             }
+        }
+
+        private void 新規作成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            inputItemAllClear();
+            GbMakerClear();
+
+        }
+
+        private void 開くOToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (ofdOpenData.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(ofdOpenData.FileName, FileMode.Open))
+                {
+                    try
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        //逆シリアル化して読み込む
+                        _CarsReport = (BindingList<CarReport>)formatter.Deserialize(fs);
+                        //データグリッドビューに再設定
+                        dgvArticle.DataSource = _CarsReport;
+                        //選択されている箇所を各コントロールへ表示
+                        dgvArticle_Click(sender, e);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to deserialize. Reason: " + se.Message);
+                        throw;
+                    }
+                }
+            }
+
+        }
+
+        private void 名前を付けて保存AToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (sfdSaveData.ShowDialog() == DialogResult.OK)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+
+                using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create))
+                {
+                    try
+                    {
+                        //シリアル化して保存
+                        formatter.Serialize(fs, _CarsReport);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + se.Message);
+                        throw;
+                    }
+                }
+            }
+
+        }
+
+        private void 終了XToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
