@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,11 +22,17 @@ namespace CarReportSystem
         {
             InitializeComponent();
             dgvArticle.DataSource = _CarsReport;
+
         }
 
         //内容をリストに追加
         private void btAdd_Click(object sender, EventArgs e)
         {
+            if (cbAuthor.Text == "")
+            {
+                MessageBox.Show("記録者を入力してください");
+                return;
+            }
             //オブジェクトの追加
             CarReport obj = new CarReport
             {
@@ -46,8 +56,9 @@ namespace CarReportSystem
         //オブジェクトをクリア
         private void inputItemAllClear()
         {
+            dtpCreatedDate = null;
             cbAuthor.Text = default;
-            MakerSelect().Equals(default);
+            MakerSelect().Equals(null);
             cbName.Text = default;
             tbReport.Text = default;
             pbImage.Image = null;
@@ -160,5 +171,53 @@ namespace CarReportSystem
             Application.Exit();
         }
 
+        //保存
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            if (sfdSaveData.ShowDialog() == DialogResult.OK)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+
+                using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create))
+                {
+                    try
+                    {
+                        //シリアル化して保存
+                        formatter.Serialize(fs, _CarsReport);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + se.Message);
+                        throw;
+                    }
+                }
+            }
+        }
+
+        //リストを開く
+        private void btOpenArticle_Click(object sender, EventArgs e)
+        {
+            if (ofdOpenData.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(ofdOpenData.FileName, FileMode.Open))
+                {
+                    try
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        //逆シリアル化して読み込む
+                        _CarsReport = (BindingList<CarReport>)formatter.Deserialize(fs);
+                        //データグリッドビューに再設定
+                        dgvArticle.DataSource = _CarsReport;
+                        //選択されている箇所を各コントロールへ表示
+                        dgvArticle_Click(sender, e);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to deserialize. Reason: " + se.Message);
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

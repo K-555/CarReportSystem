@@ -7,19 +7,27 @@ using System.Threading.Tasks;
 
 namespace CarReportSystem
 {
+    //シリアル化
+    [Serializable]
     class CarReport
     {
         //作成日
+        [System.ComponentModel.DisplayName("日付")]
         public DateTime CreatedDate { get; set; }
         //記録者
+        [System.ComponentModel.DisplayName("記録者")]
         public string Author { get; set; }
         //メーカー（列挙型）
+        [System.ComponentModel.DisplayName("メーカー")]
         public CarMaker Maker { get; set; }
         //車名
+        [System.ComponentModel.DisplayName("車名")]
         public string Name { get; set; }
         //レポート
+        [System.ComponentModel.DisplayName("レポート")]
         public string Report { get; set; }
         //画像
+        [System.ComponentModel.DisplayName("画像")]
         public Image Picturt { get; set; }
     }
 

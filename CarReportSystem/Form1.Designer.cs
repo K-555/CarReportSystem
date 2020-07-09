@@ -57,6 +57,8 @@
             this.rbNull = new System.Windows.Forms.RadioButton();
             this.gbMaker = new System.Windows.Forms.GroupBox();
             this.ofdOpenImage = new System.Windows.Forms.OpenFileDialog();
+            this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
+            this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.gbMaker.SuspendLayout();
@@ -159,6 +161,7 @@
             this.btOpenArticle.TabIndex = 4;
             this.btOpenArticle.Text = "開く";
             this.btOpenArticle.UseVisualStyleBackColor = true;
+            this.btOpenArticle.Click += new System.EventHandler(this.btOpenArticle_Click);
             // 
             // btSave
             // 
@@ -169,6 +172,7 @@
             this.btSave.TabIndex = 4;
             this.btSave.Text = "保存";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btOpenImage
             // 
@@ -361,6 +365,10 @@
             // 
             this.ofdOpenImage.FileName = "openFileDialog1";
             // 
+            // ofdOpenData
+            // 
+            this.ofdOpenData.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -430,6 +438,8 @@
         private System.Windows.Forms.RadioButton rbNull;
         private System.Windows.Forms.GroupBox gbMaker;
         private System.Windows.Forms.OpenFileDialog ofdOpenImage;
+        private System.Windows.Forms.SaveFileDialog sfdSaveData;
+        private System.Windows.Forms.OpenFileDialog ofdOpenData;
     }
 }
 
