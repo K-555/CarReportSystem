@@ -51,17 +51,35 @@ namespace CarReportSystem
 
             //次の入力に備えて各項目をクリア
             inputItemAllClear();
+            GbMakerClear();
+            initButtons();
+            dgvArticle.ClearSelection();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            initButtons();
         }
 
         //オブジェクトをクリア
         private void inputItemAllClear()
         {
-            dtpCreatedDate = null;
+            //dtpCreatedDate = null;
             cbAuthor.Text = default;
-            MakerSelect().Equals(null);
+            //MakerSelect().Equals(false);
             cbName.Text = default;
             tbReport.Text = default;
             pbImage.Image = null;
+        }
+
+        private void GbMakerClear()
+        {
+            rbT.Checked = false;
+            rbN.Checked = false;
+            rbH.Checked = false;
+            rbS.Checked = false;
+            rbG.Checked = false;
+            rbNull.Checked = false;
         }
 
         //コンボボックスの入力候補登録(記録者と車名)
@@ -141,7 +159,7 @@ namespace CarReportSystem
         private void btDeleteReport_Click(object sender, EventArgs e)
         {
             _CarsReport.RemoveAt(dgvArticle.CurrentRow.Index);
-            //initButtons();
+            initButtons();
             inputItemAllClear();
             dgvArticle.ClearSelection();
         }
@@ -162,7 +180,41 @@ namespace CarReportSystem
         //画像削除
         private void btDeleteImage_Click(object sender, EventArgs e)
         {
-            pbImage.Image = null;
+            if (pbImage.Image == null)
+                return;
+            if (MessageBox.Show("削除してよいですか。", "確認", MessageBoxButtons.OKCancel
+                        , MessageBoxIcon.Question)==DialogResult.OK)
+            {
+                pbImage.Image = null;
+            }
+            
+        }
+
+        //修正と削除ボタンの表示・非表示
+        private void initButtons()
+        {
+            if (_CarsReport.Count > 0)
+            {
+                btRetouching.Enabled = true;
+                btDeleteReport.Enabled = true;
+                btDeleteImage.Enabled = true;
+            }
+            else
+            {
+                btRetouching.Enabled = false;
+                btDeleteReport.Enabled = false;
+                btDeleteImage.Enabled = false;
+            }
+        }
+
+        private void MakerSelectCheck()
+        {
+            CarReport selectCar = _CarsReport[dgvArticle.CurrentRow.Index];
+
+            if (selectCar.Maker == CarMaker.トヨタ)
+            {
+                rbT.Checked = true;
+            }
         }
 
         //終了

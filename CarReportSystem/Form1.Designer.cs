@@ -266,6 +266,7 @@
             this.dgvArticle.Location = new System.Drawing.Point(97, 342);
             this.dgvArticle.Name = "dgvArticle";
             this.dgvArticle.RowTemplate.Height = 21;
+            this.dgvArticle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticle.Size = new System.Drawing.Size(690, 187);
             this.dgvArticle.TabIndex = 6;
             this.dgvArticle.Click += new System.EventHandler(this.dgvArticle_Click);
@@ -398,6 +399,7 @@
             this.Controls.Add(this.labelCreatedDate);
             this.Name = "Form1";
             this.Text = "試乗レポート管理システム";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.gbMaker.ResumeLayout(false);
