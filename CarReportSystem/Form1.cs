@@ -171,7 +171,7 @@ namespace CarReportSystem
 
             dtpCreatedDate.Value = selectCar.CreatedDate;
             cbAuthor.Text = selectCar.Author;
-            MakerSelect().Equals(selectCar.Maker);
+            MakerSelectCheck();
             cbName.Text = selectCar.Name;
             tbReport.Text = selectCar.Report;
             pbImage.Image = selectCar.Picturt;
@@ -207,6 +207,7 @@ namespace CarReportSystem
             }
         }
 
+        //ボタン比較
         private void MakerSelectCheck()
         {
             CarReport selectCar = _CarsReport[dgvArticle.CurrentRow.Index];
@@ -214,6 +215,26 @@ namespace CarReportSystem
             if (selectCar.Maker == CarMaker.トヨタ)
             {
                 rbT.Checked = true;
+            }
+            else if (selectCar.Maker == CarMaker.日産)
+            {
+                rbN.Checked = true;
+            }
+            else if (selectCar.Maker == CarMaker.ホンダ)
+            {
+                rbH.Checked = true;
+            }
+            else if (selectCar.Maker == CarMaker.スバル)
+            {
+                rbS.Checked = true;
+            }
+            else if (selectCar.Maker == CarMaker.外車)
+            {
+                rbG.Checked = true;
+            }
+            else if (selectCar.Maker == CarMaker.その他)
+            {
+                rbNull.Checked = true;
             }
         }
 
