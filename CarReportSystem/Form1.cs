@@ -21,7 +21,7 @@ namespace CarReportSystem
         public Form1()
         {
             InitializeComponent();
-            dgvArticle.DataSource = _CarsReport;
+            //dgvArticle.DataSource = _CarsReport;
 
         }
 
@@ -58,6 +58,7 @@ namespace CarReportSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dgvArticle.Columns[0].Visible = false;  //Idを非表示にする
             initButtons();
         }
 
@@ -165,14 +166,15 @@ namespace CarReportSystem
         //修正する行を表示
         private void dgvArticle_Click(object sender, EventArgs e)
         {
-            CarReport selectCar = _CarsReport[dgvArticle.CurrentRow.Index];
-
-            dtpCreatedDate.Value = selectCar.CreatedDate;
-            cbAuthor.Text = selectCar.Author;
-            MakerSelectCheck();
-            cbName.Text = selectCar.Name;
-            tbReport.Text = selectCar.Report;
-            pbImage.Image = selectCar.Picturt;
+            var test = dgvArticle.CurrentRow.Cells[2].Value;
+            //CarReport selectCar = _CarsReport[dgvArticle.CurrentRow.Index];
+            
+            //dtpCreatedDate.Value = selectCar.CreatedDate;
+            //cbAuthor.Text = selectCar.Author;
+            //MakerSelectCheck();
+            //cbName.Text = selectCar.Name;
+            //tbReport.Text = selectCar.Report;
+            //pbImage.Image = selectCar.Picturt;
         }
 
         //画像削除
@@ -288,6 +290,8 @@ namespace CarReportSystem
                     }
                 }
             }
+
+
         }
 
         private void 新規作成ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -349,6 +353,25 @@ namespace CarReportSystem
         private void 終了XToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202015DataSet);
+
+        }
+
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.carReportTableAdapter.Fill(this.infosys202015DataSet.CarReport);
+            
+        }
+
+        private void dgvArticle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var test = dgvArticle.CurrentRow.Cells[2].Value;
         }
     }
 }
