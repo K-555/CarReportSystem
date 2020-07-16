@@ -60,6 +60,7 @@ namespace CarReportSystem
         {
             dgvArticle.Columns[0].Visible = false;  //Idを非表示にする
             initButtons();
+
         }
 
         //オブジェクトをクリア
@@ -175,6 +176,7 @@ namespace CarReportSystem
             //cbName.Text = selectCar.Name;
             //tbReport.Text = selectCar.Report;
             //pbImage.Image = selectCar.Picturt;
+            
         }
 
         //画像削除
@@ -366,12 +368,77 @@ namespace CarReportSystem
         private void 接続ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.carReportTableAdapter.Fill(this.infosys202015DataSet.CarReport);
-            
+
         }
 
         private void dgvArticle_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var test = dgvArticle.CurrentRow.Cells[2].Value;
+            
+        }
+
+        //ボタンを表示
+        private void dgvCarReports_Click(object sender, EventArgs e)
+        {
+            //選択したレコード（行）の、インデックスで指定した項目を取り出す
+            var maker = dgvArticle.CurrentRow.Cells[3].Value;
+
+            //ラジオボタンの設定
+            setMakerRadioButtonSet((string)maker);
+
+        }
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] byteData)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(byteData);
+            return img;
+        }
+
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] byteData = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return byteData;
+        }
+
+
+        private void setMakerRadioButtonSet(string carMaker)
+        {
+
+            switch (carMaker)
+            {
+                case "トヨタ":
+                    rbT.Checked = true;
+                    break;
+                case "日産":
+                    rbN.Checked = true;
+                    break;
+                case "ホンダ":
+                    rbH.Checked = true;
+                    break;
+                case "スバル":
+                    rbS.Checked = true;
+                    break;
+                case "外車":
+                    rbG.Checked = true;
+                    break;
+                default:
+                    rbNull.Checked = true;
+                    break;
+            }
+        }
+
+        private void 更新RToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dgvArticle.CurrentRow.Cells[2].Value = cbAuthor.Text;
+
+            //データベース反映
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202015DataSet);
         }
     }
 }
