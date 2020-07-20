@@ -357,7 +357,7 @@ namespace CarReportSystem
             Application.Exit();
         }
 
-        //データベース
+        //データベース更新　(反映)
         private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -378,7 +378,13 @@ namespace CarReportSystem
         {
             //選択したレコード（行）の、インデックスで指定した項目を取り出す
             var maker = dgvArticle.CurrentRow.Cells[3].Value;
-        
+
+            //選択したレコードを表示する
+            dtpCreatedDate.Value = (DateTime)dgvArticle.CurrentRow.Cells[1].Value;
+            cbAuthor.Text = (string)dgvArticle.CurrentRow.Cells[2].Value;
+            cbName.Text = dgvArticle.CurrentRow.Cells[4].Value.ToString();
+            tbReport.Text = dgvArticle.CurrentRow.Cells[5].Value.ToString();
+
             //ラジオボタンの設定
             SetMakerRadioButtonSet((string)maker);
         
@@ -430,12 +436,48 @@ namespace CarReportSystem
         //更新
         private void 更新RToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            dgvArticle.CurrentRow.Cells[1].Value = dtpCreatedDate.Value;
             dgvArticle.CurrentRow.Cells[2].Value = cbAuthor.Text;
+            dgvArticle.CurrentRow.Cells[3].Value = GetSelectRadioButton();
+            dgvArticle.CurrentRow.Cells[4].Value = cbName.Text;
+            dgvArticle.CurrentRow.Cells[5].Value = tbReport.Text;
+            //dgvArticle.CurrentRow.Cells[6].Value = pbImage.Image;
 
             //データベース反映
             this.Validate();
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202015DataSet);
         }
+
+        //修正のラジオボタン
+        private string GetSelectRadioButton()
+        {
+            if (rbT.Checked)
+            {
+                return rbT.Text;
+            }
+            else if (rbN.Checked)
+            {
+                return rbN.Text;
+            }
+            else if (rbH.Checked)
+            {
+                return rbH.Text;
+            }
+            else if (rbS.Checked)
+            {
+                return rbS.Text;
+            }
+            else if (rbG.Checked)
+            {
+                return rbG.Text;
+            }
+            else 
+            {
+                return rbNull.Text;
+            }
+        }
+
     }
 }
