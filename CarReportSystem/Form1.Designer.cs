@@ -239,7 +239,6 @@
             // dtpCreatedDate
             // 
             this.dtpCreatedDate.CalendarFont = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dtpCreatedDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "CreatedDate", true));
             this.dtpCreatedDate.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dtpCreatedDate.Location = new System.Drawing.Point(99, 60);
             this.dtpCreatedDate.Name = "dtpCreatedDate";
@@ -258,7 +257,6 @@
             // 
             // cbAuthor
             // 
-            this.cbAuthor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Author", true));
             this.cbAuthor.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbAuthor.FormattingEnabled = true;
             this.cbAuthor.Location = new System.Drawing.Point(99, 96);
@@ -356,7 +354,6 @@
             // 
             // cbName
             // 
-            this.cbName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Name", true));
             this.cbName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbName.FormattingEnabled = true;
             this.cbName.Location = new System.Drawing.Point(99, 191);
@@ -366,7 +363,6 @@
             // 
             // tbReport
             // 
-            this.tbReport.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Report", true));
             this.tbReport.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbReport.Location = new System.Drawing.Point(99, 237);
             this.tbReport.Multiline = true;
@@ -388,7 +384,6 @@
             // rbT
             // 
             this.rbT.AutoSize = true;
-            this.rbT.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.carReportBindingSource, "Maker", true));
             this.rbT.Location = new System.Drawing.Point(14, 16);
             this.rbT.Name = "rbT";
             this.rbT.Size = new System.Drawing.Size(47, 16);
@@ -400,7 +395,6 @@
             // rbN
             // 
             this.rbN.AutoSize = true;
-            this.rbN.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.carReportBindingSource, "Maker", true));
             this.rbN.Location = new System.Drawing.Point(67, 16);
             this.rbN.Name = "rbN";
             this.rbN.Size = new System.Drawing.Size(47, 16);
@@ -412,7 +406,6 @@
             // rbH
             // 
             this.rbH.AutoSize = true;
-            this.rbH.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.carReportBindingSource, "Maker", true));
             this.rbH.Location = new System.Drawing.Point(120, 16);
             this.rbH.Name = "rbH";
             this.rbH.Size = new System.Drawing.Size(51, 16);
@@ -424,7 +417,6 @@
             // rbS
             // 
             this.rbS.AutoSize = true;
-            this.rbS.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.carReportBindingSource, "Maker", true));
             this.rbS.Location = new System.Drawing.Point(177, 16);
             this.rbS.Name = "rbS";
             this.rbS.Size = new System.Drawing.Size(52, 16);
@@ -436,7 +428,6 @@
             // rbG
             // 
             this.rbG.AutoSize = true;
-            this.rbG.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.carReportBindingSource, "Maker", true));
             this.rbG.Location = new System.Drawing.Point(235, 16);
             this.rbG.Name = "rbG";
             this.rbG.Size = new System.Drawing.Size(47, 16);
@@ -448,7 +439,6 @@
             // rbNull
             // 
             this.rbNull.AutoSize = true;
-            this.rbNull.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.carReportBindingSource, "Maker", true));
             this.rbNull.Location = new System.Drawing.Point(288, 16);
             this.rbNull.Name = "rbNull";
             this.rbNull.Size = new System.Drawing.Size(54, 16);
@@ -599,7 +589,6 @@
             this.dgvArticle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticle.Size = new System.Drawing.Size(772, 189);
             this.dgvArticle.TabIndex = 23;
-            this.dgvArticle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticle_CellContentClick);
             this.dgvArticle.Click += new System.EventHandler(this.dgvCarReports_Click);
             // 
             // dataGridViewTextBoxColumn1

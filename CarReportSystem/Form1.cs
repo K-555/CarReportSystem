@@ -357,6 +357,7 @@ namespace CarReportSystem
             Application.Exit();
         }
 
+        //データベース
         private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -365,16 +366,11 @@ namespace CarReportSystem
 
         }
 
+        //接続
         private void 接続ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.carReportTableAdapter.Fill(this.infosys202015DataSet.CarReport);
 
-        }
-
-        private void dgvArticle_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var test = dgvArticle.CurrentRow.Cells[2].Value;
-            
         }
 
         //ボタンを表示
@@ -382,13 +378,13 @@ namespace CarReportSystem
         {
             //選択したレコード（行）の、インデックスで指定した項目を取り出す
             var maker = dgvArticle.CurrentRow.Cells[3].Value;
-
+        
             //ラジオボタンの設定
-            setMakerRadioButtonSet((string)maker);
-
+            SetMakerRadioButtonSet((string)maker);
+        
         }
 
-        // バイト配列をImageオブジェクトに変換
+        // バイト配列をImageオブジェクトに変換(画面表示)
         public static Image ByteArrayToImage(byte[] byteData)
         {
             ImageConverter imgconv = new ImageConverter();
@@ -396,7 +392,7 @@ namespace CarReportSystem
             return img;
         }
 
-        // Imageオブジェクトをバイト配列に変換
+        // Imageオブジェクトをバイト配列に変換(データベースに保存)
         public static byte[] ImageToByteArray(Image img)
         {
             ImageConverter imgconv = new ImageConverter();
@@ -404,8 +400,8 @@ namespace CarReportSystem
             return byteData;
         }
 
-
-        private void setMakerRadioButtonSet(string carMaker)
+        //ラジオボタンの設定
+        private void SetMakerRadioButtonSet(string carMaker)
         {
 
             switch (carMaker)
@@ -431,6 +427,7 @@ namespace CarReportSystem
             }
         }
 
+        //更新
         private void 更新RToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dgvArticle.CurrentRow.Cells[2].Value = cbAuthor.Text;
