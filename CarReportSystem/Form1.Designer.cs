@@ -106,6 +106,10 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.carReportBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.carReportBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.tbSearchCarName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btSearchExe = new System.Windows.Forms.Button();
             createdDateLabel = new System.Windows.Forms.Label();
             authorLabel = new System.Windows.Forms.Label();
             makerLabel = new System.Windows.Forms.Label();
@@ -119,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingNavigator)).BeginInit();
             this.carReportBindingNavigator.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // createdDateLabel
@@ -315,7 +320,7 @@
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(84, 27);
             this.btAdd.TabIndex = 4;
-            this.btAdd.Text = "追加";
+            this.btAdd.Text = "接続";
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
@@ -374,10 +379,10 @@
             // 
             this.pbImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImage.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.carReportBindingSource, "Picturt", true));
             this.pbImage.Location = new System.Drawing.Point(504, 96);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(285, 201);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImage.TabIndex = 7;
             this.pbImage.TabStop = false;
             // 
@@ -700,6 +705,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -796,11 +802,50 @@
             this.carReportBindingNavigator.TabIndex = 10;
             this.carReportBindingNavigator.Text = "bindingNavigator1";
             // 
+            // tbSearchCarName
+            // 
+            this.tbSearchCarName.Location = new System.Drawing.Point(88, 14);
+            this.tbSearchCarName.Name = "tbSearchCarName";
+            this.tbSearchCarName.Size = new System.Drawing.Size(200, 19);
+            this.tbSearchCarName.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "車名";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBox1.Controls.Add(this.btSearchExe);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tbSearchCarName);
+            this.groupBox1.Location = new System.Drawing.Point(826, 268);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(304, 90);
+            this.groupBox1.TabIndex = 38;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "検索";
+            // 
+            // btSearchExe
+            // 
+            this.btSearchExe.Location = new System.Drawing.Point(88, 60);
+            this.btSearchExe.Name = "btSearchExe";
+            this.btSearchExe.Size = new System.Drawing.Size(112, 20);
+            this.btSearchExe.TabIndex = 38;
+            this.btSearchExe.Text = "実行";
+            this.btSearchExe.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 636);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(createdDateLabel);
             this.Controls.Add(this.createdDateDateTimePicker);
             this.Controls.Add(authorLabel);
@@ -850,6 +895,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingNavigator)).EndInit();
             this.carReportBindingNavigator.ResumeLayout(false);
             this.carReportBindingNavigator.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -928,6 +975,10 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton carReportBindingNavigatorSaveItem;
         private System.Windows.Forms.BindingNavigator carReportBindingNavigator;
+        private System.Windows.Forms.TextBox tbSearchCarName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btSearchExe;
     }
 }
 

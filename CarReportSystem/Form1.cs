@@ -25,35 +25,10 @@ namespace CarReportSystem
 
         }
 
-        //内容をリストに追加
+        //内容をリストに接続
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (cbAuthor.Text == "")
-            {
-                MessageBox.Show("記録者を入力してください");
-                return;
-            }
-            //オブジェクトの追加
-            CarReport obj = new CarReport
-            {
-                CreatedDate = dtpCreatedDate.Value,
-                Author = cbAuthor.Text,
-                Maker = MakerSelect(),        
-                Name = cbName.Text,
-                Report = tbReport.Text,
-                Picturt = pbImage.Image
-            };
-
-            //コンボボックスの入力候補に登録
-            setComboBoxAuthorName(cbAuthor.Text,cbName.Text);
-
-            _CarsReport.Insert(0,obj);  //リストの先頭
-
-            //次の入力に備えて各項目をクリア
-            inputItemAllClear();
-            GbMakerClear();
-            initButtons();
-            dgvArticle.ClearSelection();
+            this.carReportTableAdapter.Fill(this.infosys202015DataSet.CarReport);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -143,14 +118,27 @@ namespace CarReportSystem
         //修正
         private void btRetouching_Click(object sender, EventArgs e)
         {
-            CarReport selectCar = _CarsReport[dgvArticle.CurrentRow.Index];
+            dgvArticle.CurrentRow.Cells[1].Value = dtpCreatedDate.Value;
+            dgvArticle.CurrentRow.Cells[2].Value = cbAuthor.Text;
+            dgvArticle.CurrentRow.Cells[3].Value = GetSelectRadioButton();
+            dgvArticle.CurrentRow.Cells[4].Value = cbName.Text;
+            dgvArticle.CurrentRow.Cells[5].Value = tbReport.Text;
 
-            selectCar.CreatedDate = dtpCreatedDate.Value;
-            selectCar.Author = cbAuthor.Text;
-            selectCar.Maker = MakerSelect();
-            selectCar.Name = cbName.Text;
-            selectCar.Report = tbReport.Text;
-            selectCar.Picturt = pbImage.Image;
+            if (pbImage.Image == null)
+            {
+                dgvArticle.CurrentRow.Cells[6].Value = null;
+            }
+            else
+            {
+                dgvArticle.CurrentRow.Cells[6].Value = ImageToByteArray(pbImage.Image);
+
+            }
+
+
+            //データベース反映
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202015DataSet);
 
             dgvArticle.Refresh();       //データグリッドビューの再描画
         }
@@ -188,6 +176,7 @@ namespace CarReportSystem
                         , MessageBoxIcon.Question)==DialogResult.OK)
             {
                 pbImage.Image = null;
+
             }
             
         }
@@ -197,13 +186,11 @@ namespace CarReportSystem
         {
             if (_CarsReport.Count > 0)
             {
-                btRetouching.Enabled = true;
-                btDeleteReport.Enabled = true;
+                //btDeleteReport.Enabled = true;
             }
             else
             {
-                btRetouching.Enabled = false;
-                btDeleteReport.Enabled = false;
+                //btDeleteReport.Enabled = false;
             }
         }
 
@@ -376,17 +363,32 @@ namespace CarReportSystem
         //ボタンを表示
         private void dgvCarReports_Click(object sender, EventArgs e)
         {
-            //選択したレコード（行）の、インデックスで指定した項目を取り出す
-            var maker = dgvArticle.CurrentRow.Cells[3].Value;
 
-            //選択したレコードを表示する
-            dtpCreatedDate.Value = (DateTime)dgvArticle.CurrentRow.Cells[1].Value;
-            cbAuthor.Text = (string)dgvArticle.CurrentRow.Cells[2].Value;
-            cbName.Text = dgvArticle.CurrentRow.Cells[4].Value.ToString();
-            tbReport.Text = dgvArticle.CurrentRow.Cells[5].Value.ToString();
+            try
+            {   
+                //選択したレコード（行）の、インデックスで指定した項目を取り出す
+                var maker = dgvArticle.CurrentRow.Cells[3].Value;
 
-            //ラジオボタンの設定
-            SetMakerRadioButtonSet((string)maker);
+                //選択したレコードを表示する
+                dtpCreatedDate.Value = (DateTime)dgvArticle.CurrentRow.Cells[1].Value;
+                cbAuthor.Text = (string)dgvArticle.CurrentRow.Cells[2].Value;
+                cbName.Text = dgvArticle.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = dgvArticle.CurrentRow.Cells[5].Value.ToString();
+
+                //ラジオボタンの設定
+                SetMakerRadioButtonSet((string)maker);
+                pbImage.Image = ByteArrayToImage((byte[])dgvArticle.CurrentRow.Cells[6].Value);
+            }
+            catch (InvalidCastException)    //画像がDBに登録されていないとき
+            {
+                pbImage.Image = null;
+            }
+            catch (Exception ex)    //上記以外のデータ全て拾う
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         
         }
 
@@ -442,7 +444,16 @@ namespace CarReportSystem
             dgvArticle.CurrentRow.Cells[3].Value = GetSelectRadioButton();
             dgvArticle.CurrentRow.Cells[4].Value = cbName.Text;
             dgvArticle.CurrentRow.Cells[5].Value = tbReport.Text;
-            //dgvArticle.CurrentRow.Cells[6].Value = pbImage.Image;
+
+            if (pbImage.Image == null)
+            {
+                dgvArticle.CurrentRow.Cells[6].Value = null;
+            }
+            else
+            {
+                dgvArticle.CurrentRow.Cells[6].Value = ImageToByteArray(pbImage.Image);
+
+            }
 
             //データベース反映
             this.Validate();
