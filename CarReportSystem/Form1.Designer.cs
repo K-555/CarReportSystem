@@ -839,6 +839,7 @@
             this.btSearchExe.TabIndex = 38;
             this.btSearchExe.Text = "実行";
             this.btSearchExe.UseVisualStyleBackColor = true;
+            this.btSearchExe.Click += new System.EventHandler(this.btSearchExe_Click);
             // 
             // Form1
             // 

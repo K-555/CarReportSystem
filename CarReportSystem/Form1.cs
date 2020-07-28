@@ -490,5 +490,9 @@ namespace CarReportSystem
             }
         }
 
+        private void btSearchExe_Click(object sender, EventArgs e)
+        {
+            this.carReportTableAdapter.FillByCarName(this.infosys202015DataSet.CarReport, tbSearchCarName.Text);
+        }
     }
 }
