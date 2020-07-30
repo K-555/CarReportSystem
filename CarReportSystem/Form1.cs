@@ -490,9 +490,50 @@ namespace CarReportSystem
             }
         }
 
+        //検索
         private void btSearchExe_Click(object sender, EventArgs e)
         {
-            this.carReportTableAdapter.FillByCarName(this.infosys202015DataSet.CarReport, tbSearchCarName.Text);
+            if (rbOR.Checked == true)
+            {
+                this.carReportTableAdapter.FillByCarName(this.infosys202015DataSet.CarReport,
+                         tbSearchCreatedDate.Text, tbSearchMaker.Text, tbSearchCarName.Text);
+            }
+            else if (rbAND.Checked == true)
+            {
+                if (tbSearchMaker.Text == "" && tbSearchCarName.Text == "")
+                {
+                    this.carReportTableAdapter.FillByTime(this.infosys202015DataSet.CarReport,
+                         tbSearchCreatedDate.Text);
+                }
+                else
+                {
+                    this.carReportTableAdapter.FillByCreatedDate(this.infosys202015DataSet.CarReport,
+                             tbSearchMaker.Text, tbSearchCarName.Text);
+                }
+            }
         }
+
+        //日付をnullにする
+        private void cbNULL_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                tbSearchCreatedDate.Value = GetDateTime().Value;
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show(ioe.Message);
+
+            }
+            
+            
+        }
+
+        public DateTime? GetDateTime()
+        {
+            // 処理
+            return null;
+        }
+
     }
 }

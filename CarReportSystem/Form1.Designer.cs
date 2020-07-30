@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label createdDateLabel;
-            System.Windows.Forms.Label authorLabel;
-            System.Windows.Forms.Label makerLabel;
-            System.Windows.Forms.Label nameLabel;
-            System.Windows.Forms.Label reportLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelCreatedDate = new System.Windows.Forms.Label();
             this.labelAuthor = new System.Windows.Forms.Label();
@@ -88,11 +83,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.createdDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.authorTextBox = new System.Windows.Forms.TextBox();
-            this.makerTextBox = new System.Windows.Forms.TextBox();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.reportTextBox = new System.Windows.Forms.TextBox();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -109,12 +99,14 @@
             this.tbSearchCarName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbNULL = new System.Windows.Forms.CheckBox();
             this.btSearchExe = new System.Windows.Forms.Button();
-            createdDateLabel = new System.Windows.Forms.Label();
-            authorLabel = new System.Windows.Forms.Label();
-            makerLabel = new System.Windows.Forms.Label();
-            nameLabel = new System.Windows.Forms.Label();
-            reportLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbSearchMaker = new System.Windows.Forms.TextBox();
+            this.tbSearchCreatedDate = new System.Windows.Forms.DateTimePicker();
+            this.rbOR = new System.Windows.Forms.RadioButton();
+            this.rbAND = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202015DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
@@ -125,51 +117,6 @@
             this.carReportBindingNavigator.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // createdDateLabel
-            // 
-            createdDateLabel.AutoSize = true;
-            createdDateLabel.Location = new System.Drawing.Point(833, 120);
-            createdDateLabel.Name = "createdDateLabel";
-            createdDateLabel.Size = new System.Drawing.Size(75, 12);
-            createdDateLabel.TabIndex = 26;
-            createdDateLabel.Text = "Created Date:";
-            // 
-            // authorLabel
-            // 
-            authorLabel.AutoSize = true;
-            authorLabel.Location = new System.Drawing.Point(833, 144);
-            authorLabel.Name = "authorLabel";
-            authorLabel.Size = new System.Drawing.Size(41, 12);
-            authorLabel.TabIndex = 28;
-            authorLabel.Text = "Author:";
-            // 
-            // makerLabel
-            // 
-            makerLabel.AutoSize = true;
-            makerLabel.Location = new System.Drawing.Point(833, 169);
-            makerLabel.Name = "makerLabel";
-            makerLabel.Size = new System.Drawing.Size(38, 12);
-            makerLabel.TabIndex = 30;
-            makerLabel.Text = "Maker:";
-            // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(833, 194);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(36, 12);
-            nameLabel.TabIndex = 32;
-            nameLabel.Text = "Name:";
-            // 
-            // reportLabel
-            // 
-            reportLabel.AutoSize = true;
-            reportLabel.Location = new System.Drawing.Point(833, 219);
-            reportLabel.Name = "reportLabel";
-            reportLabel.Size = new System.Drawing.Size(41, 12);
-            reportLabel.TabIndex = 34;
-            reportLabel.Text = "Report:";
             // 
             // labelCreatedDate
             // 
@@ -638,46 +585,6 @@
             this.dataGridViewImageColumn1.HeaderText = "Picturt";
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
-            // createdDateDateTimePicker
-            // 
-            this.createdDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.carReportBindingSource, "CreatedDate", true));
-            this.createdDateDateTimePicker.Location = new System.Drawing.Point(914, 116);
-            this.createdDateDateTimePicker.Name = "createdDateDateTimePicker";
-            this.createdDateDateTimePicker.Size = new System.Drawing.Size(200, 19);
-            this.createdDateDateTimePicker.TabIndex = 27;
-            // 
-            // authorTextBox
-            // 
-            this.authorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Author", true));
-            this.authorTextBox.Location = new System.Drawing.Point(914, 141);
-            this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(200, 19);
-            this.authorTextBox.TabIndex = 29;
-            // 
-            // makerTextBox
-            // 
-            this.makerTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Maker", true));
-            this.makerTextBox.Location = new System.Drawing.Point(914, 166);
-            this.makerTextBox.Name = "makerTextBox";
-            this.makerTextBox.Size = new System.Drawing.Size(200, 19);
-            this.makerTextBox.TabIndex = 31;
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(914, 191);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(200, 19);
-            this.nameTextBox.TabIndex = 33;
-            // 
-            // reportTextBox
-            // 
-            this.reportTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carReportBindingSource, "Report", true));
-            this.reportTextBox.Location = new System.Drawing.Point(914, 216);
-            this.reportTextBox.Name = "reportTextBox";
-            this.reportTextBox.Size = new System.Drawing.Size(200, 19);
-            this.reportTextBox.TabIndex = 35;
-            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -804,42 +711,121 @@
             // 
             // tbSearchCarName
             // 
-            this.tbSearchCarName.Location = new System.Drawing.Point(88, 14);
+            this.tbSearchCarName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbSearchCarName.Location = new System.Drawing.Point(88, 112);
             this.tbSearchCarName.Name = "tbSearchCarName";
-            this.tbSearchCarName.Size = new System.Drawing.Size(200, 19);
+            this.tbSearchCarName.Size = new System.Drawing.Size(200, 23);
             this.tbSearchCarName.TabIndex = 36;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(12, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(40, 16);
             this.label1.TabIndex = 37;
             this.label1.Text = "車名";
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBox1.Controls.Add(this.rbAND);
+            this.groupBox1.Controls.Add(this.rbOR);
+            this.groupBox1.Controls.Add(this.cbNULL);
             this.groupBox1.Controls.Add(this.btSearchExe);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tbSearchMaker);
             this.groupBox1.Controls.Add(this.tbSearchCarName);
-            this.groupBox1.Location = new System.Drawing.Point(826, 268);
+            this.groupBox1.Controls.Add(this.tbSearchCreatedDate);
+            this.groupBox1.Location = new System.Drawing.Point(819, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 90);
+            this.groupBox1.Size = new System.Drawing.Size(304, 198);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索";
             // 
+            // cbNULL
+            // 
+            this.cbNULL.AutoSize = true;
+            this.cbNULL.Location = new System.Drawing.Point(88, 47);
+            this.cbNULL.Name = "cbNULL";
+            this.cbNULL.Size = new System.Drawing.Size(113, 16);
+            this.cbNULL.TabIndex = 39;
+            this.cbNULL.Text = "日付をNULLにする";
+            this.cbNULL.UseVisualStyleBackColor = true;
+            this.cbNULL.CheckedChanged += new System.EventHandler(this.cbNULL_CheckedChanged);
+            // 
             // btSearchExe
             // 
-            this.btSearchExe.Location = new System.Drawing.Point(88, 60);
+            this.btSearchExe.Location = new System.Drawing.Point(88, 148);
             this.btSearchExe.Name = "btSearchExe";
-            this.btSearchExe.Size = new System.Drawing.Size(112, 20);
+            this.btSearchExe.Size = new System.Drawing.Size(123, 25);
             this.btSearchExe.TabIndex = 38;
             this.btSearchExe.Text = "実行";
             this.btSearchExe.UseVisualStyleBackColor = true;
             this.btSearchExe.Click += new System.EventHandler(this.btSearchExe_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(6, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 16);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "日付";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(6, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "メーカー";
+            // 
+            // tbSearchMaker
+            // 
+            this.tbSearchMaker.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbSearchMaker.Location = new System.Drawing.Point(88, 72);
+            this.tbSearchMaker.Name = "tbSearchMaker";
+            this.tbSearchMaker.Size = new System.Drawing.Size(200, 23);
+            this.tbSearchMaker.TabIndex = 36;
+            // 
+            // tbSearchCreatedDate
+            // 
+            this.tbSearchCreatedDate.CalendarFont = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbSearchCreatedDate.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbSearchCreatedDate.Location = new System.Drawing.Point(88, 18);
+            this.tbSearchCreatedDate.Name = "tbSearchCreatedDate";
+            this.tbSearchCreatedDate.Size = new System.Drawing.Size(200, 23);
+            this.tbSearchCreatedDate.TabIndex = 1;
+            // 
+            // rbOR
+            // 
+            this.rbOR.AutoSize = true;
+            this.rbOR.Location = new System.Drawing.Point(216, 141);
+            this.rbOR.Name = "rbOR";
+            this.rbOR.Size = new System.Drawing.Size(39, 16);
+            this.rbOR.TabIndex = 40;
+            this.rbOR.TabStop = true;
+            this.rbOR.Text = "OR";
+            this.rbOR.UseVisualStyleBackColor = true;
+            // 
+            // rbAND
+            // 
+            this.rbAND.AutoSize = true;
+            this.rbAND.Location = new System.Drawing.Point(216, 163);
+            this.rbAND.Name = "rbAND";
+            this.rbAND.Size = new System.Drawing.Size(47, 16);
+            this.rbAND.TabIndex = 40;
+            this.rbAND.TabStop = true;
+            this.rbAND.Text = "AND";
+            this.rbAND.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -847,16 +833,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 636);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(createdDateLabel);
-            this.Controls.Add(this.createdDateDateTimePicker);
-            this.Controls.Add(authorLabel);
-            this.Controls.Add(this.authorTextBox);
-            this.Controls.Add(makerLabel);
-            this.Controls.Add(this.makerTextBox);
-            this.Controls.Add(nameLabel);
-            this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(reportLabel);
-            this.Controls.Add(this.reportTextBox);
             this.Controls.Add(this.dgvArticle);
             this.Controls.Add(this.carReportBindingNavigator);
             this.Controls.Add(this.gbMaker);
@@ -955,11 +931,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DateTimePicker createdDateDateTimePicker;
-        private System.Windows.Forms.TextBox authorTextBox;
-        private System.Windows.Forms.TextBox makerTextBox;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.TextBox reportTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem 接続ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 更新RToolStripMenuItem;
@@ -980,6 +951,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btSearchExe;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker tbSearchCreatedDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbSearchMaker;
+        private System.Windows.Forms.CheckBox cbNULL;
+        private System.Windows.Forms.RadioButton rbAND;
+        private System.Windows.Forms.RadioButton rbOR;
     }
 }
 
